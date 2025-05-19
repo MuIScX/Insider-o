@@ -144,6 +144,10 @@ app.post('/api/lobbies', (req, res) => {
   res.json(lobby);
 });
 
+app.get('/api/hello', (req, res) => {
+  res.send('Hello from Express on Vercel!');
+});
+
 app.post('/api/lobbies/join', (req, res) => {
   const { code, playerName } = req.body;
   if (!code || !playerName) {
