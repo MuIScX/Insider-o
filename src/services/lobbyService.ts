@@ -1,6 +1,5 @@
 import { GameLobby, Player } from '../types/game';
-
-const API_URL = 'http://localhost:3001/api';
+import { API_URL } from '../config';
 
 // In a real application, this would be handled by a backend server
 const lobbies: { [key: string]: GameLobby } = {};

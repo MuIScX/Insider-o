@@ -1,6 +1,5 @@
 import { GameState } from '../types/game';
-
-const API_URL = 'http://localhost:3001/api';
+import { API_URL } from '../config';
 
 export const getGameState = async (lobbyId: string): Promise<GameState> => {
   const response = await fetch(`${API_URL}/games/${lobbyId}`);
