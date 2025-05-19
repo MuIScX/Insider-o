@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GameState, GamePlayer } from '../types/game';
+import { API_URL } from '../config';
 
 const Game: React.FC = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Game: React.FC = () => {
 
     const fetchGameState = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/games/${lobbyId}`);
+        const response = await fetch(`${API_URL}/games/${lobbyId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch game state');
         }
@@ -43,7 +44,7 @@ const Game: React.FC = () => {
 
     const fetchTime = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/games/${lobbyId}/time`);
+        const response = await fetch(`${API_URL}/games/${lobbyId}/time`);
         if (!response.ok) {
           throw new Error('Failed to fetch time');
         }
@@ -116,7 +117,7 @@ const Game: React.FC = () => {
     if (!lobbyId || !playerId) return;
 
     try {
-      const response = await fetch(`http://localhost:3001/api/games/${lobbyId}/guess`, {
+      const response = await fetch(`${API_URL}/games/${lobbyId}/guess`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
