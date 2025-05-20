@@ -52,7 +52,12 @@ export const joinLobby = async (code: string, playerName: string): Promise<GameL
 };
 
 export const getLobby = async (lobbyId: string): Promise<GameLobby> => {
-  const response = await fetch(`${API_URL}/lobbies/${lobbyId}`);
+  const response = await fetch(`${API_URL}/lobbies/${lobbyId}`, {
+    method: 'GET',
+    headers: {
+      "ngrok-skip-browser-warning": "true",
+    },
+  });
 
   if (!response.ok) {
     throw new Error('Failed to get lobby');

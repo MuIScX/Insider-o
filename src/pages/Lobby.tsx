@@ -23,7 +23,7 @@ const Lobby: React.FC = () => {
     const fetchLobby = async () => {
       try {
         const currentLobby = await getLobby(lobbyId);
-        
+        console.log('currentLobby', currentLobby);
         // Check if player is still in the lobby
         const player = currentLobby.players.find((p: Player) => p.id === playerId);
         if (!player) {
@@ -39,6 +39,7 @@ const Lobby: React.FC = () => {
         const interval = setInterval(async () => {
           try {
             const updatedLobby = await getLobby(lobbyId);
+            console.log('updatedLobby', updatedLobby);
             if (updatedLobby) {
               setLobby(updatedLobby);
               if (updatedLobby.status === 'starting') {
