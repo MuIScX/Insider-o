@@ -1,0 +1,1 @@
+export const API_URL = 'cow-unique-lemming.ngrok-free.app/api'; 

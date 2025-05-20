@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GameState, GamePlayer } from '../types/game';
+import { API_URL } from '../config';
 
 interface VoteCounts {
   [playerId: string]: number;
@@ -27,7 +28,7 @@ const Voting: React.FC = () => {
 
     const fetchGameState = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/games/${lobbyId}`);
+        const response = await fetch(`${API_URL}/games/${lobbyId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch game state');
         }
@@ -43,7 +44,7 @@ const Voting: React.FC = () => {
 
     const fetchVotes = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/games/${lobbyId}/votes`);
+        const response = await fetch(`${API_URL}/games/${lobbyId}/votes`);
         if (!response.ok) {
           throw new Error('Failed to fetch votes');
         }
@@ -75,7 +76,7 @@ const Voting: React.FC = () => {
     if (!lobbyId || !playerId) return;
 
     try {
-      const response = await fetch(`http://localhost:3001/api/games/${lobbyId}/vote`, {
+      const response = await fetch(`${API_URL}/games/${lobbyId}/vote`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
