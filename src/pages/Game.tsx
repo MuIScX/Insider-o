@@ -23,7 +23,12 @@ const Game: React.FC = () => {
 
     const fetchGameState = async () => {
       try {
-        const response = await fetch(`${API_URL}/games/${lobbyId}`);
+        const response = await fetch(`${API_URL}/games/${lobbyId}`, {
+          method: 'GET',
+          headers: {
+            "ngrok-skip-browser-warning": "true",
+          },
+        });
         if (!response.ok) {
           throw new Error('Failed to fetch game state');
         }
@@ -44,7 +49,12 @@ const Game: React.FC = () => {
 
     const fetchTime = async () => {
       try {
-        const response = await fetch(`${API_URL}/games/${lobbyId}/time`);
+        const response = await fetch(`${API_URL}/games/${lobbyId}/time`, {
+          method: 'GET',
+          headers: {
+            "ngrok-skip-browser-warning": "true",
+          },
+        });
         if (!response.ok) {
           throw new Error('Failed to fetch time');
         }

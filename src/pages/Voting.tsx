@@ -28,7 +28,12 @@ const Voting: React.FC = () => {
 
     const fetchGameState = async () => {
       try {
-        const response = await fetch(`${API_URL}/games/${lobbyId}`);
+        const response = await fetch(`${API_URL}/games/${lobbyId}`, {
+          method: 'GET',
+          headers: {
+            "ngrok-skip-browser-warning": "true",
+          },
+        });
         if (!response.ok) {
           throw new Error('Failed to fetch game state');
         }
@@ -44,7 +49,12 @@ const Voting: React.FC = () => {
 
     const fetchVotes = async () => {
       try {
-        const response = await fetch(`${API_URL}/games/${lobbyId}/votes`);
+        const response = await fetch(`${API_URL}/games/${lobbyId}/votes`, {
+          method: 'GET',
+          headers: {
+            "ngrok-skip-browser-warning": "true",
+          },
+        });
         if (!response.ok) {
           throw new Error('Failed to fetch votes');
         }
